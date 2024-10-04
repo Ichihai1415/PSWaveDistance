@@ -7,7 +7,7 @@ using System.Text.Json;
 namespace PSWaveDistance
 {
     /// <summary>
-    /// インスタンスを作成して読み込んでください。
+    /// インスタンスを作成して読み込んでください(オブジェクト参照が必要です)。
     /// </summary>
     public class PSWaveDistance
     {
