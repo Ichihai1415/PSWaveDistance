@@ -10,10 +10,12 @@
 ## 使用例
 
 ```cs
+using PSWaveDistance;
+
 //到達距離を求めるのみ
 
 //データの読み込みのためインスタンスを作成する必要があります
-var psd = new PSWaveDistance.PSDistance();
+var psd = new PSDistances();
 
 //深さ(double):自動で近い値に調整されます
 var depth = 20.2;
