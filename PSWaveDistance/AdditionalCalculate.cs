@@ -68,7 +68,7 @@ namespace PSWaveDistance
         /// <summary>
         /// 収束値
         /// </summary>
-        public const double CONVERGENCE_MAX= 1e-12;
+        public const double CONVERGENCE_MAX = 1e-12;
 
         /// <summary>
         /// Vincenty法(順解法)を用いて緯度経度を求めます。
@@ -76,7 +76,7 @@ namespace PSWaveDistance
         /// <param name="firstLat">始点の緯度</param>
         /// <param name="firstLon">始点の経度</param>
         /// <param name="azimuth">方位角</param>
-        /// <param name="distance">距離</param>
+        /// <param name="distance">距離(km)</param>
         /// <param name="ellipsoidID"><see cref="CalAids.EarthEllipsoid"/>で定義されているID</param>
         /// <returns>(緯度, 経度, 方位角)</returns>
         /// <remarks><see href="https://qiita.com/r-fuji/items/5eefb451cf7113f1e51b"/>を参考</remarks>
@@ -88,7 +88,7 @@ namespace PSWaveDistance
             var phi1 = CalAids.ToRadians(firstLat);
             var lambda1 = CalAids.ToRadians(firstLon);
             var alpha1 = CalAids.ToRadians(azimuth);
-            var s = distance;
+            var s = distance * 1000d;
 
             var sinAlpha1 = Math.Sin(alpha1);
             var cosAlpha1 = Math.Cos(alpha1);
@@ -137,7 +137,7 @@ namespace PSWaveDistance
         /// </summary>
         /// <param name="firstLat">始点の緯度</param>
         /// <param name="firstLon">始点の経度</param>
-        /// <param name="distance">距離</param>
+        /// <param name="distance">距離(km)</param>
         /// <param name="degreeDivide">360度の分割回数(=n角形)</param>
         /// <param name="ellipsoidID"><see cref="CalAids.EarthEllipsoid"/>で定義されているID</param>
         /// <returns>(緯度, 経度, 方位角)</returns>
