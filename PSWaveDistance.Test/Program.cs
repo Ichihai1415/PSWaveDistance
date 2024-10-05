@@ -4,30 +4,69 @@ using BenchmarkDotNet.Running;
 public class Program
 {
     static readonly Random r = new();
-    static readonly PSWaveDistance.PSWaveDistance psd = new();
+    static readonly PSWaveDistance.PSDistances psd = new();
 
     private static void Main(string[] args)
     {
 
-        for (int i = 0; i < 30; i++)
+        /*
+        for (int i = 0; i < 1; i++)
         {
             var d = r.Next(300);
             var s = r.NextDouble() * 100;
             var (PWaveDistance, SWaveDistance) = psd.GetDistances(d, s, double.NaN);
             Console.WriteLine($"d={d} s={s}  ->  p:{PWaveDistance} s:{SWaveDistance}");
         }
-        //var summary = BenchmarkRunner.Run<Benchmark>();
+        Console.WriteLine();*/
+
+        /*
+        var (pWaveLatLonList, sWaveLatLonList) = psd.GetLatLonList(10, 50, 35.2, 136.2, 360);
+        foreach(var (lat, lon) in pWaveLatLonList)
+        {
+            Console.WriteLine(lat + "," + lon);
+        }*/
+
+        /*
+        var b = new Benchmark();
+        for (int i = 0; i < 30; i++)
+        {
+            b.GetLatLonList360();
+        }
+        return;*/
+
+        var summary = BenchmarkRunner.Run<Benchmark>();
     }
 
+    /// <summary>
+    /// ベンチマーク関連クラス
+    /// </summary>
     [ShortRunJob]
     public class Benchmark
     {
         [Benchmark]
-        public void GetDist()
+        public (double, double, double, double) GetRandom()
         {
-            var d = r.Next(300);
-            var s = r.NextDouble() * 100;
+            var d = r.NextDouble() * 600;
+            var s = r.NextDouble() * 300;
+            var la = 20 + r.NextDouble() * 50;
+            var lo = 120 + r.NextDouble() * 50;
+            return (d, s, la, lo);
+        }
+
+        [Benchmark]
+        public string GetDist()
+        {
+            var (d, s, _, _) = GetRandom();
             var ps = psd.GetDistances(d, s, double.NaN);
+            return ps.ToString();
+        }
+
+        [Benchmark]
+        public string GetLatLonList360()
+        {
+            var (d, s, la, lo) = GetRandom();
+            var a = psd.GetLatLonList(d, s, la, lo, 360);
+            return a.ToString();
         }
     }
 }

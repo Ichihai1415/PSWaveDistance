@@ -5,6 +5,18 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Copyright>2024 ichihai1415</Copyright>
+    <Title>PSWaveDistance</Title>
+    <Company>Ichihai1415</Company>
+    <Authors>Ichihai1415</Authors>
+    <Description>走時表を変換したデータを用いて深さと経過時間からPS波の到達距離を求めます。</Description>
+    <PackageProjectUrl>https://github.com/Ichihai1415/PSWaveDistance</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Ichihai1415/PSWaveDistance</RepositoryUrl>
+    <PackageTags>distance,</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <FileVersion>0.2.0.0</FileVersion>
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,6 +26,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.4" />
