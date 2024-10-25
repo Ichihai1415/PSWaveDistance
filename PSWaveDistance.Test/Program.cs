@@ -34,7 +34,7 @@ public class Program
         }
         return;*/
 
-        var summary = BenchmarkRunner.Run<Benchmark>();
+        //var summary = BenchmarkRunner.Run<Benchmark>();
     }
 
     /// <summary>

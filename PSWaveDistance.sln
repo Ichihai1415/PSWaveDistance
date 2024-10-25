@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSWaveDistance", "PSWaveDistance\PSWaveDistance.csproj", "{1ECA0423-89DA-4F72-805B-6F006791759A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSWaveDistance.Test", "PSWaveDistance.Test\PSWaveDistance.Test.csproj", "{1B6EB5E2-3EA4-4181-A79C-9C0D261CCFED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSWaveDistance.Test", "PSWaveDistance.Test\PSWaveDistance.Test.csproj", "{1B6EB5E2-3EA4-4181-A79C-9C0D261CCFED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSWaveDistance.Test.RealTime", "PSWaveDistance.Test.RealTime\PSWaveDistance.Test.RealTime.csproj", "{C3ECAF9A-6B9D-4D17-BBD6-825302E673BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1B6EB5E2-3EA4-4181-A79C-9C0D261CCFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B6EB5E2-3EA4-4181-A79C-9C0D261CCFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B6EB5E2-3EA4-4181-A79C-9C0D261CCFED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3ECAF9A-6B9D-4D17-BBD6-825302E673BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3ECAF9A-6B9D-4D17-BBD6-825302E673BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3ECAF9A-6B9D-4D17-BBD6-825302E673BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3ECAF9A-6B9D-4D17-BBD6-825302E673BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
