@@ -12,6 +12,11 @@ namespace PSWaveDistance.Test.RealTime
             InitializeComponent();
             mapjson = JsonNode.Parse(Resources.AreaForecastLocalE_GIS_20240520_1)!;
             T_time.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.f");
+
+            N_latSta.Value = (decimal)33.5;
+            N_latEnd.Value = (decimal)37.5;
+            N_lonSta.Value = (decimal)135.0;
+            N_lonEnd.Value = (decimal)139.0;
         }
 
         private void B_start_Click(object sender, EventArgs e)
@@ -22,23 +27,34 @@ namespace PSWaveDistance.Test.RealTime
             Ti_proc.Enabled = true;
         }
 
-        HttpClient hc = new HttpClient();
+        readonly HttpClient hc = new();
 
         private void B_get_Click(object sender, EventArgs e)
         {
-            B_start.Enabled = false;
-            B_get.Enabled = false;
-            B_stop.Enabled = true;
+            if (!C_autoGet.Checked)
+            {
+                B_start.Enabled = false;
+                B_get.Enabled = false;
+                B_stop.Enabled = true;
+            }
+
             var jsonSt = hc.GetAsync($"http://www.kmoni.bosai.go.jp/webservice/hypo/eew/{DateTime.Now - TimeSpan.FromSeconds(2):yyyyMMddHHmmss}.json").Result.Content.ReadAsStringAsync().Result;
+            //var jsonSt = hc.GetAsync("http://www.kmoni.bosai.go.jp/webservice/hypo/eew/20210213231450.json").Result.Content.ReadAsStringAsync().Result;
             var json = JsonNode.Parse(jsonSt);
 
             var message = json["result"]["message"].ToString();
             if (message != "")
             {
-                MessageBox.Show("取得失敗 : " + message, "PSWaveDistance.Test.RealTime", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                B_start.Enabled = true;
-                B_get.Enabled = true;
-                B_stop.Enabled = false;
+                L_message.Text = message;
+                P_image.BackgroundImage = null;
+                if (!C_autoGet.Checked)
+                {
+                    B_start.Enabled = true;
+                    B_get.Enabled = true;
+                    B_stop.Enabled = false;
+                }
+                else
+                    Ti_proc.Enabled = false;
                 return;
             }
 
@@ -47,6 +63,7 @@ namespace PSWaveDistance.Test.RealTime
             N_dep.Value = decimal.Parse(json["depth"].ToString().Replace("km", ""));
             T_time.Text = DateTime.ParseExact(json["origin_time"].ToString(), "yyyyMMddHHmmss", CultureInfo.CurrentCulture).ToString("yyyy/MM/dd HH:mm:ss.f");
 
+            L_message.Text = json["region_name"].ToString() + "  M" + json["magunitude"].ToString() + "  #" + json["report_num"].ToString() + "  EventID:" + json["report_id"].ToString();
             Ti_proc.Enabled = true;
         }
 
@@ -79,7 +96,7 @@ namespace PSWaveDistance.Test.RealTime
             var seconds = (drawTime - originTime).TotalSeconds;
             if (seconds > 0)
             {
-                var (pLatLon, sLatLon) = psd!.GetLatLonList(depth, seconds, hypoLat, hypoLon, 360);
+                var (pLatLon, sLatLon) = psd!.GetLatLonList(depth, seconds, hypoLat, hypoLon, 45);
                 if (pLatLon.Count > 2)//基本360、失敗時0か1
                 {
                     var pPts = pLatLon.Select(x => new Point((int)((x.Lon - lonSta) * zoomW), (int)((latEnd - x.Lat) * zoomH))).ToList()!;
@@ -166,6 +183,9 @@ namespace PSWaveDistance.Test.RealTime
             return mapImg;
         }
 
+#pragma warning restore CS8602 // null 参照の可能性があるものの逆参照です。
+#pragma warning restore CS8604 // Null 参照引数の可能性があります。
+
         private void B_zoomUp_Click(object sender, EventArgs e)
         {
             var d = (decimal)0.5;
@@ -211,8 +231,25 @@ namespace PSWaveDistance.Test.RealTime
             N_lonSta.Value += d;
             N_lonEnd.Value += d;
         }
-#pragma warning restore CS8602 // null 参照の可能性があるものの逆参照です。
-#pragma warning restore CS8604 // Null 参照引数の可能性があります。
 
+        private void C_autoGet_CheckedChanged(object sender, EventArgs e)
+        {
+            B_start.Enabled = !C_autoGet.Checked;
+            B_get.Enabled = !C_autoGet.Checked;
+            B_stop.Enabled = !C_autoGet.Checked;
+
+            T_time.Enabled = !C_autoGet.Checked;
+            N_lat.Enabled = !C_autoGet.Checked;
+            N_lon.Enabled = !C_autoGet.Checked;
+            N_dep.Enabled = !C_autoGet.Checked;
+
+            B_get_Click(sender, e);
+            Ti_autoGet.Enabled = C_autoGet.Checked;
+        }
+
+        private void Ti_autoGet_Tick(object sender, EventArgs e)
+        {
+            B_get_Click(sender, e);
+        }
     }
 }

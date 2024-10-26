@@ -49,6 +49,10 @@
             B_moveDown = new Button();
             B_moveLeft = new Button();
             B_moveRight = new Button();
+            C_autoGet = new CheckBox();
+            Ti_autoGet = new System.Windows.Forms.Timer(components);
+            L_message = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)N_lat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)N_lon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)N_dep).BeginInit();
@@ -104,38 +108,44 @@
             // 
             // B_start
             // 
-            B_start.Location = new Point(315, 13);
+            B_start.BackColor = SystemColors.Control;
+            B_start.ForeColor = Color.Black;
+            B_start.Location = new Point(326, 13);
             B_start.Name = "B_start";
-            B_start.Size = new Size(56, 23);
+            B_start.Size = new Size(50, 23);
             B_start.TabIndex = 4;
             B_start.Text = "START";
-            B_start.UseVisualStyleBackColor = true;
+            B_start.UseVisualStyleBackColor = false;
             B_start.Click += B_start_Click;
             // 
             // B_get
             // 
-            B_get.Location = new Point(373, 13);
+            B_get.BackColor = SystemColors.Control;
+            B_get.ForeColor = Color.Black;
+            B_get.Location = new Point(382, 13);
             B_get.Name = "B_get";
-            B_get.Size = new Size(56, 23);
+            B_get.Size = new Size(50, 23);
             B_get.TabIndex = 5;
             B_get.Text = "GET";
-            B_get.UseVisualStyleBackColor = true;
+            B_get.UseVisualStyleBackColor = false;
             B_get.Click += B_get_Click;
             // 
             // B_stop
             // 
+            B_stop.BackColor = SystemColors.Control;
             B_stop.Enabled = false;
-            B_stop.Location = new Point(432, 13);
+            B_stop.ForeColor = Color.Black;
+            B_stop.Location = new Point(438, 13);
             B_stop.Name = "B_stop";
-            B_stop.Size = new Size(56, 23);
+            B_stop.Size = new Size(50, 23);
             B_stop.TabIndex = 6;
             B_stop.Text = "STOP";
-            B_stop.UseVisualStyleBackColor = true;
+            B_stop.UseVisualStyleBackColor = false;
             B_stop.Click += B_stop_Click;
             // 
             // Ti_proc
             // 
-            Ti_proc.Interval = 250;
+            Ti_proc.Interval = 500;
             Ti_proc.Tick += Ti_proc_Tick;
             // 
             // N_latSta
@@ -191,16 +201,17 @@
             C_LockLatLon.AutoSize = true;
             C_LockLatLon.Checked = true;
             C_LockLatLon.CheckState = CheckState.Checked;
-            C_LockLatLon.Location = new Point(236, 466);
+            C_LockLatLon.Location = new Point(236, 468);
             C_LockLatLon.Name = "C_LockLatLon";
-            C_LockLatLon.Size = new Size(48, 19);
+            C_LockLatLon.Size = new Size(55, 19);
             C_LockLatLon.TabIndex = 11;
-            C_LockLatLon.Text = "lock";
+            C_LockLatLon.Text = "LOCK";
             C_LockLatLon.UseVisualStyleBackColor = true;
             // 
             // P_image
             // 
             P_image.BackgroundImageLayout = ImageLayout.Zoom;
+            P_image.Dock = DockStyle.Fill;
             P_image.Location = new Point(0, 0);
             P_image.Name = "P_image";
             P_image.Size = new Size(500, 500);
@@ -209,69 +220,118 @@
             // 
             // B_zoomUp
             // 
+            B_zoomUp.BackColor = SystemColors.Control;
+            B_zoomUp.ForeColor = Color.Black;
             B_zoomUp.Location = new Point(290, 466);
             B_zoomUp.Name = "B_zoomUp";
             B_zoomUp.Size = new Size(23, 23);
             B_zoomUp.TabIndex = 13;
             B_zoomUp.Text = "+";
-            B_zoomUp.UseVisualStyleBackColor = true;
+            B_zoomUp.UseVisualStyleBackColor = false;
             B_zoomUp.Click += B_zoomUp_Click;
             // 
             // B_zoomDown
             // 
+            B_zoomDown.BackColor = SystemColors.Control;
+            B_zoomDown.ForeColor = Color.Black;
             B_zoomDown.Location = new Point(315, 466);
             B_zoomDown.Name = "B_zoomDown";
             B_zoomDown.Size = new Size(23, 23);
             B_zoomDown.TabIndex = 14;
             B_zoomDown.Text = "-";
-            B_zoomDown.UseVisualStyleBackColor = true;
+            B_zoomDown.UseVisualStyleBackColor = false;
             B_zoomDown.Click += B_zoomDown_Click;
             // 
             // B_moveUp
             // 
+            B_moveUp.BackColor = SystemColors.Control;
+            B_moveUp.ForeColor = Color.Black;
             B_moveUp.Location = new Point(348, 466);
             B_moveUp.Name = "B_moveUp";
             B_moveUp.Size = new Size(23, 23);
             B_moveUp.TabIndex = 15;
             B_moveUp.Text = "↑";
-            B_moveUp.UseVisualStyleBackColor = true;
+            B_moveUp.UseVisualStyleBackColor = false;
             B_moveUp.Click += B_moveUp_Click;
             // 
             // B_moveDown
             // 
+            B_moveDown.BackColor = SystemColors.Control;
+            B_moveDown.ForeColor = Color.Black;
             B_moveDown.Location = new Point(374, 466);
             B_moveDown.Name = "B_moveDown";
             B_moveDown.Size = new Size(23, 23);
             B_moveDown.TabIndex = 16;
             B_moveDown.Text = "↓";
-            B_moveDown.UseVisualStyleBackColor = true;
+            B_moveDown.UseVisualStyleBackColor = false;
             B_moveDown.Click += B_moveDown_Click;
             // 
             // B_moveLeft
             // 
+            B_moveLeft.BackColor = SystemColors.Control;
+            B_moveLeft.ForeColor = Color.Black;
             B_moveLeft.Location = new Point(400, 466);
             B_moveLeft.Name = "B_moveLeft";
             B_moveLeft.Size = new Size(23, 23);
             B_moveLeft.TabIndex = 17;
             B_moveLeft.Text = "←";
-            B_moveLeft.UseVisualStyleBackColor = true;
+            B_moveLeft.UseVisualStyleBackColor = false;
             B_moveLeft.Click += B_moveLeft_Click;
             // 
             // B_moveRight
             // 
+            B_moveRight.BackColor = SystemColors.Control;
+            B_moveRight.ForeColor = Color.Black;
             B_moveRight.Location = new Point(426, 466);
             B_moveRight.Name = "B_moveRight";
             B_moveRight.Size = new Size(23, 23);
             B_moveRight.TabIndex = 18;
             B_moveRight.Text = "→";
-            B_moveRight.UseVisualStyleBackColor = true;
+            B_moveRight.UseVisualStyleBackColor = false;
             B_moveRight.Click += B_moveRight_Click;
+            // 
+            // C_autoGet
+            // 
+            C_autoGet.AutoSize = true;
+            C_autoGet.Location = new Point(408, 42);
+            C_autoGet.Name = "C_autoGet";
+            C_autoGet.Size = new Size(80, 19);
+            C_autoGet.TabIndex = 19;
+            C_autoGet.Text = "AUTO GET";
+            C_autoGet.UseVisualStyleBackColor = true;
+            C_autoGet.CheckedChanged += C_autoGet_CheckedChanged;
+            // 
+            // Ti_autoGet
+            // 
+            Ti_autoGet.Interval = 5000;
+            Ti_autoGet.Tick += Ti_autoGet_Tick;
+            // 
+            // L_message
+            // 
+            L_message.AutoSize = true;
+            L_message.Location = new Point(12, 43);
+            L_message.Name = "L_message";
+            L_message.Size = new Size(0, 15);
+            L_message.TabIndex = 20;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(400, 448);
+            label1.Name = "label1";
+            label1.Size = new Size(96, 15);
+            label1.TabIndex = 21;
+            label1.Text = "地図データ:気象庁";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Black;
             ClientSize = new Size(500, 500);
+            Controls.Add(label1);
+            Controls.Add(L_message);
+            Controls.Add(C_autoGet);
             Controls.Add(B_moveRight);
             Controls.Add(B_moveLeft);
             Controls.Add(B_moveDown);
@@ -291,6 +351,8 @@
             Controls.Add(N_lat);
             Controls.Add(T_time);
             Controls.Add(P_image);
+            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Form1";
             Text = "PSWaveDistance.Test.RealTime";
@@ -328,5 +390,9 @@
         private Button B_moveDown;
         private Button B_moveLeft;
         private Button B_moveRight;
+        private CheckBox C_autoGet;
+        private System.Windows.Forms.Timer Ti_autoGet;
+        private Label L_message;
+        private Label label1;
     }
 }
