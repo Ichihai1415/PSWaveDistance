@@ -121,4 +121,10 @@
   <data name="AreaForecastLocalE_GIS_20240520_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AreaForecastLocalE_GIS_20240520_1.geojson;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="PSWaveDistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSWaveDistance.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PSWaveDistance1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSWaveDistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

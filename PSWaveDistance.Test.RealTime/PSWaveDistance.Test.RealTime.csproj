@@ -6,7 +6,22 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Resources\PSWaveDistance.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\PSWaveDistance.ico" />
+    <None Remove="Resources\PSWaveDistance.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\PSWaveDistance.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PSWaveDistance.ico" />
+    <EmbeddedResource Include="Resources\PSWaveDistance.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PSWaveDistance\PSWaveDistance.csproj" />

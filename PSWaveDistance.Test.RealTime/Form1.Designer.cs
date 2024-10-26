@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             T_time = new TextBox();
             N_lat = new NumericUpDown();
             N_lon = new NumericUpDown();
@@ -369,6 +370,7 @@
             Controls.Add(P_image);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Form1";
             Text = "PSWaveDistance.Test.RealTime";

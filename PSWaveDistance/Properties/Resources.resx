@@ -121,6 +121,9 @@
   <data name="PSWaveDistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PSWaveDistance.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PSWaveDistance1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSWaveDistance.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="tjma2001-sec2dist" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\psdists-0.1.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
