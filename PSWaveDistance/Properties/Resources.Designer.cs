@@ -61,7 +61,17 @@ namespace PSWaveDistance.Properties {
         }
         
         /// <summary>
-        ///   [{&quot;Depth&quot;:0,&quot;TimeData&quot;:[{&quot;Seconds&quot;:0.1,&quot;PDist&quot;:0,&quot;SDist&quot;:0},{&quot;Seconds&quot;:0.2,&quot;PDist&quot;:1,&quot;SDist&quot;:1},{&quot;Seconds&quot;:0.3,&quot;PDist&quot;:1,&quot;SDist&quot;:1},{&quot;Seconds&quot;:0.4,&quot;PDist&quot;:2,&quot;SDist&quot;:1},{&quot;Seconds&quot;:0.5,&quot;PDist&quot;:2,&quot;SDist&quot;:1},{&quot;Seconds&quot;:0.6,&quot;PDist&quot;:3,&quot;SDist&quot;:2},{&quot;Seconds&quot;:0.7,&quot;PDist&quot;:3,&quot;SDist&quot;:2},{&quot;Seconds&quot;:0.8,&quot;PDist&quot;:4,&quot;SDist&quot;:2},{&quot;Seconds&quot;:0.9,&quot;PDist&quot;:4,&quot;SDist&quot;:3},{&quot;Seconds&quot;:1,&quot;PDist&quot;:5,&quot;SDist&quot;:3},{&quot;Seconds&quot;:1.1,&quot;PDist&quot;:5,&quot;SDist&quot;:3},{&quot;Seconds&quot;:1.2,&quot;PDist&quot;:6,&quot;SDist&quot;:3},{&quot;Seconds&quot;:1.3,&quot;PDist&quot;:6,&quot;SDist&quot;:4},{&quot;Seconds&quot;:1.4,&quot;PDist&quot; [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] PSWaveDistance {
+            get {
+                object obj = ResourceManager.GetObject("PSWaveDistance", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   [{&quot;Depth&quot;:0,&quot;TimeData&quot;:[{&quot;Seconds&quot;:0.1,&quot;PDist&quot;:0.481,&quot;SDist&quot;:0.284},{&quot;Seconds&quot;:0.2,&quot;PDist&quot;:0.962,&quot;SDist&quot;:0.569},{&quot;Seconds&quot;:0.3,&quot;PDist&quot;:1.442,&quot;SDist&quot;:0.853},{&quot;Seconds&quot;:0.4,&quot;PDist&quot;:1.923,&quot;SDist&quot;:1.138},{&quot;Seconds&quot;:0.5,&quot;PDist&quot;:2.405,&quot;SDist&quot;:1.422},{&quot;Seconds&quot;:0.6,&quot;PDist&quot;:2.887,&quot;SDist&quot;:1.707},{&quot;Seconds&quot;:0.7,&quot;PDist&quot;:3.369,&quot;SDist&quot;:1.991},{&quot;Seconds&quot;:0.8,&quot;PDist&quot;:3.851,&quot;SDist&quot;:2.277},{&quot;Seconds&quot;:0.9,&quot;PDist&quot;:4.335,&quot;SDist&quot;:2.563},{&quot;Seconds&quot;:1,&quot;PDist&quot;:4.82,&quot;SDist&quot;:2.849},{&quot;Seconds&quot;:1.1,&quot;PDist&quot;:5.306,&quot;SDist&quot;:3.134},{&quot;Secon [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string tjma2001_sec2dist {
             get {

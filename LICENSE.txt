@@ -1,3 +1,10 @@
+The original data (Travel time table) was prepared by the Japan Meteorological Agency.
+
+https://www.data.jma.go.jp/svd/eqev/data/bulletin/catalog/appendix/trtime/trt_j.html
+(EN:https://www.data.jma.go.jp/svd/eqev/data/bulletin/catalog/appendix/trtime/trt_e.html)
+
+----------------------------------------------------------------------------------------------------
+
 MIT License
 
 Copyright (c) 2024 Ichihai1415

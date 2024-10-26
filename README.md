@@ -5,7 +5,7 @@
 
 変換は検証用プログラム[PSCircleTest](https://github.com/Ichihai1415/PSCircleTest)を使用しました。詳細はこれも参照してください。
 
-変換したデータは`Resources`に0.1秒ごとのJSON形式であります(サイズが大きいです)。PSCircleTestでは各深さに分かれたcsvファイルを作成できます(直接欲しければ言ってください)。
+変換したデータは`Resources`に0.1秒ごとのJSON形式であります(サイズが大きいです)。PSCircleTestでは各深さに分かれたcsvファイルを作成できます(直接欲しければDM等で伝えてください)。
 
 ## 使用例
 
@@ -23,7 +23,7 @@ var depth = 20.2;
 //経過秒数(double):小数第二位で四捨五入されます。
 var seconds = 13.01;
 
-//返り値:(P波の到達距離(double), S波の到達距離(double))のタプルです。
+//返り値:(P波の到達距離(double), S波の到達距離(double))のタプルです(小数第3桁まで)。
 //3つ目の引数(double)は指定しなくても問題ありません。データ範囲外になったとき返す値を指定できます。既定は-1です。
 var (pDist, sDist) = psd.GetDistances(depth, seconds, double.NaN);
 
@@ -37,7 +37,7 @@ var firstLat = 35.2;
 var firstLon = 136.4;
 
 //n角形で近似
-var degreeDivide = 360;
+var degreeDivide = 180;
 
 //返り値:(P波のList<(到達緯度(double), 到達経度(double))>, S波のList<(到達緯度(double), 到達経度(double))>)のタプルのリストのタプルです。
 var (pLatLon, sLatLon) = psd.GetLatLonList(depth, seconds, firstLat, firstLon, degreeDivide)

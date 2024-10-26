@@ -12,11 +12,13 @@
     <PackageProjectUrl>https://github.com/Ichihai1415/PSWaveDistance</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Ichihai1415/PSWaveDistance</RepositoryUrl>
-    <PackageTags>distance,</PackageTags>
+    <PackageTags>earthquake</PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <FileVersion>0.2.0.0</FileVersion>
-    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <NeutralLanguage>ja-JP</NeutralLanguage>
+    <PackageIcon>PSWaveDistance.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,6 +28,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\PSWaveDistance.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE.txt">
@@ -40,6 +46,14 @@
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PSWaveDistance.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
