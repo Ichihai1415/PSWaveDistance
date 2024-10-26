@@ -1,5 +1,4 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Running;
 
 public class Program
 {
@@ -8,6 +7,14 @@ public class Program
 
     private static void Main(string[] args)
     {
+
+        Console.WriteLine("time,pWave,sWave");
+        for (int i = 0; i < 1000; i++)
+        {
+            var (PWaveDistance, SWaveDistance) = psd.GetDistances(10, i * 0.1, 0);
+            Console.WriteLine($"{i * 0.1},{PWaveDistance},{SWaveDistance}");
+        }
+
 
         /*
         for (int i = 0; i < 1; i++)

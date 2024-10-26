@@ -251,5 +251,10 @@ namespace PSWaveDistance.Test.RealTime
         {
             B_get_Click(sender, e);
         }
+
+        private void N_tick_ValueChanged(object sender, EventArgs e)
+        {
+            Ti_proc.Interval = (int)(N_tick.Value * 1000);
+        }
     }
 }

@@ -53,6 +53,7 @@
             Ti_autoGet = new System.Windows.Forms.Timer(components);
             L_message = new Label();
             label1 = new Label();
+            N_tick = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)N_lat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)N_lon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)N_dep).BeginInit();
@@ -61,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)N_lonSta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)N_lonEnd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)P_image).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)N_tick).BeginInit();
             SuspendLayout();
             // 
             // T_time
@@ -323,12 +325,26 @@
             label1.TabIndex = 21;
             label1.Text = "地図データ:気象庁";
             // 
+            // N_tick
+            // 
+            N_tick.DecimalPlaces = 2;
+            N_tick.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            N_tick.Location = new Point(455, 467);
+            N_tick.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
+            N_tick.Minimum = new decimal(new int[] { 1, 0, 0, 65536 });
+            N_tick.Name = "N_tick";
+            N_tick.Size = new Size(41, 23);
+            N_tick.TabIndex = 22;
+            N_tick.Value = new decimal(new int[] { 50, 0, 0, 131072 });
+            N_tick.ValueChanged += N_tick_ValueChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(500, 500);
+            Controls.Add(N_tick);
             Controls.Add(label1);
             Controls.Add(L_message);
             Controls.Add(C_autoGet);
@@ -364,6 +380,7 @@
             ((System.ComponentModel.ISupportInitialize)N_lonSta).EndInit();
             ((System.ComponentModel.ISupportInitialize)N_lonEnd).EndInit();
             ((System.ComponentModel.ISupportInitialize)P_image).EndInit();
+            ((System.ComponentModel.ISupportInitialize)N_tick).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -394,5 +411,6 @@
         private System.Windows.Forms.Timer Ti_autoGet;
         private Label L_message;
         private Label label1;
+        private NumericUpDown N_tick;
     }
 }
