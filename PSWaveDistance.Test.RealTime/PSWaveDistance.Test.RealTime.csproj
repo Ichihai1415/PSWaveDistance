@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\PSWaveDistance.ico" />
-    <EmbeddedResource Include="Resources\PSWaveDistance.png" />
+    <Content Include="Resources\PSWaveDistance.png" />
   </ItemGroup>
 
   <ItemGroup>

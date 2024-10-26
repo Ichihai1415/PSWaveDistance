@@ -19,6 +19,9 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <NeutralLanguage>ja-JP</NeutralLanguage>
     <PackageIcon>PSWaveDistance.png</PackageIcon>
+    <ApplicationIcon>Resources\PSWaveDistance.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
+    <PackageReleaseNotes>初回リリース</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,8 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\PSWaveDistance.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Resources\PSWaveDistance.ico" />
-    <EmbeddedResource Include="Resources\PSWaveDistance.png" />
+    <Content Include="Resources\PSWaveDistance.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,7 +76,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\PSWaveDistance.png">
+    <None Include="Resources\PSWaveDistance.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
