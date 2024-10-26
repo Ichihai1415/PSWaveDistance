@@ -46,15 +46,13 @@ namespace PSWaveDistance.Test.RealTime
             if (message != "")
             {
                 L_message.Text = message;
-                P_image.BackgroundImage = null;
+                //P_image.BackgroundImage = null;
                 if (!C_autoGet.Checked)
                 {
                     B_start.Enabled = true;
                     B_get.Enabled = true;
                     B_stop.Enabled = false;
                 }
-                else
-                    Ti_proc.Enabled = false;
                 return;
             }
 
@@ -94,16 +92,20 @@ namespace PSWaveDistance.Test.RealTime
             var zoomH = mapSize / (latEnd - latSta);
 
             var seconds = (drawTime - originTime).TotalSeconds;
+            if (seconds > 480 && C_autoGet.Checked)
+            {
+                Ti_proc.Enabled = false;
+                P_image.BackgroundImage = null;
+                return;
+            }
             if (seconds > 0)
             {
                 var (pLatLon, sLatLon) = psd!.GetLatLonList(depth, seconds, hypoLat, hypoLon, 45);
-                if (pLatLon.Count > 2)//Šî–{360AŽ¸”sŽž0‚©1
+                if (pLatLon.Count > 2)//Šî–{45AŽ¸”sŽž0‚©1
                 {
                     var pPts = pLatLon.Select(x => new Point((int)((x.Lon - lonSta) * zoomW), (int)((latEnd - x.Lat) * zoomH))).ToList()!;
                     pPts.Add(pPts[0]);
-                    g.DrawPolygon(new Pen(Color.Blue, 2), pPts.ToArray());
-                    //if (seconds == 20)
-                    //throw new Exception();
+                    g.DrawPolygon(new Pen(Color.FromArgb(64, 64, 255), 2), pPts.ToArray());
                 }
                 if (sLatLon.Count > 2)
                 {

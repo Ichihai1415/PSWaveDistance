@@ -296,7 +296,7 @@
             // C_autoGet
             // 
             C_autoGet.AutoSize = true;
-            C_autoGet.Location = new Point(408, 42);
+            C_autoGet.Location = new Point(408, 43);
             C_autoGet.Name = "C_autoGet";
             C_autoGet.Size = new Size(80, 19);
             C_autoGet.TabIndex = 19;
