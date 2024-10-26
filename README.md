@@ -1,5 +1,9 @@
 # PSWaveDistance
-
+![Nuget](https://img.shields.io/nuget/v/PSWaveDistance)
+![Nuget](https://img.shields.io/nuget/dt/PSWaveDistance)
+![GitHub last commit](https://img.shields.io/github/last-commit/Ichihai1415/PSWaveDistance)
+![GitHub Release Date](https://img.shields.io/github/release-date/Ichihai1415/PSWaveDistance)
+![GitHub issues](https://img.shields.io/github/issues/Ichihai1415/PSWaveDistance)
 
 走時表を変換したデータを用いて深さと経過時間からPS波の到達距離を求めます。
 
