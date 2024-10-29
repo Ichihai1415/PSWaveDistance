@@ -53,7 +53,7 @@
             C_autoGet = new CheckBox();
             Ti_autoGet = new System.Windows.Forms.Timer(components);
             L_message = new Label();
-            label1 = new Label();
+            L_mapData = new Label();
             N_tick = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)N_lat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)N_lon).BeginInit();
@@ -313,18 +313,19 @@
             // 
             L_message.AutoSize = true;
             L_message.Location = new Point(12, 43);
+            L_message.MaximumSize = new Size(500, 500);
             L_message.Name = "L_message";
             L_message.Size = new Size(0, 15);
             L_message.TabIndex = 20;
             // 
-            // label1
+            // L_mapData
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(400, 448);
-            label1.Name = "label1";
-            label1.Size = new Size(96, 15);
-            label1.TabIndex = 21;
-            label1.Text = "地図データ:気象庁";
+            L_mapData.AutoSize = true;
+            L_mapData.Location = new Point(400, 448);
+            L_mapData.Name = "L_mapData";
+            L_mapData.Size = new Size(96, 15);
+            L_mapData.TabIndex = 21;
+            L_mapData.Text = "地図データ:気象庁";
             // 
             // N_tick
             // 
@@ -346,7 +347,7 @@
             BackColor = Color.Black;
             ClientSize = new Size(500, 500);
             Controls.Add(N_tick);
-            Controls.Add(label1);
+            Controls.Add(L_mapData);
             Controls.Add(L_message);
             Controls.Add(C_autoGet);
             Controls.Add(B_moveRight);
@@ -412,7 +413,7 @@
         private CheckBox C_autoGet;
         private System.Windows.Forms.Timer Ti_autoGet;
         private Label L_message;
-        private Label label1;
+        private Label L_mapData;
         private NumericUpDown N_tick;
     }
 }

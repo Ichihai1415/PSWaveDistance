@@ -31,38 +31,45 @@ namespace PSWaveDistance.Test.RealTime
 
         private void B_get_Click(object sender, EventArgs e)
         {
-            if (!C_autoGet.Checked)
+            try
             {
-                B_start.Enabled = false;
-                B_get.Enabled = false;
-                B_stop.Enabled = true;
-            }
-
-            var jsonSt = hc.GetAsync($"http://www.kmoni.bosai.go.jp/webservice/hypo/eew/{DateTime.Now - TimeSpan.FromSeconds(2):yyyyMMddHHmmss}.json").Result.Content.ReadAsStringAsync().Result;
-            //var jsonSt = hc.GetAsync("http://www.kmoni.bosai.go.jp/webservice/hypo/eew/20210213231450.json").Result.Content.ReadAsStringAsync().Result;
-            var json = JsonNode.Parse(jsonSt);
-
-            var message = json["result"]["message"].ToString();
-            if (message != "")
-            {
-                L_message.Text = message;
-                //P_image.BackgroundImage = null;
                 if (!C_autoGet.Checked)
                 {
-                    B_start.Enabled = true;
-                    B_get.Enabled = true;
-                    B_stop.Enabled = false;
+                    B_start.Enabled = false;
+                    B_get.Enabled = false;
+                    B_stop.Enabled = true;
                 }
-                return;
+
+                var jsonSt = hc.GetAsync($"http://www.kmoni.bosai.go.jp/webservice/hypo/eew/{DateTime.Now - TimeSpan.FromSeconds(2):yyyyMMddHHmmss}.json").Result.Content.ReadAsStringAsync().Result;
+                //var jsonSt = hc.GetAsync("http://www.kmoni.bosai.go.jp/webservice/hypo/eew/20210213231450.json").Result.Content.ReadAsStringAsync().Result;
+                var json = JsonNode.Parse(jsonSt);
+
+                var message = json["result"]["message"].ToString();
+                if (message != "")
+                {
+                    L_message.Text = message;
+                    //P_image.BackgroundImage = null;
+                    if (!C_autoGet.Checked)
+                    {
+                        B_start.Enabled = true;
+                        B_get.Enabled = true;
+                        B_stop.Enabled = false;
+                    }
+                    return;
+                }
+
+                N_lat.Value = decimal.Parse(json["latitude"].ToString());
+                N_lon.Value = decimal.Parse(json["longitude"].ToString());
+                N_dep.Value = decimal.Parse(json["depth"].ToString().Replace("km", ""));
+                T_time.Text = DateTime.ParseExact(json["origin_time"].ToString(), "yyyyMMddHHmmss", CultureInfo.CurrentCulture).ToString("yyyy/MM/dd HH:mm:ss.f");
+
+                L_message.Text = json["region_name"].ToString() + "  M" + json["magunitude"].ToString() + "  #" + json["report_num"].ToString() + "  EventID:" + json["report_id"].ToString();
+                Ti_proc.Enabled = true;
             }
-
-            N_lat.Value = decimal.Parse(json["latitude"].ToString());
-            N_lon.Value = decimal.Parse(json["longitude"].ToString());
-            N_dep.Value = decimal.Parse(json["depth"].ToString().Replace("km", ""));
-            T_time.Text = DateTime.ParseExact(json["origin_time"].ToString(), "yyyyMMddHHmmss", CultureInfo.CurrentCulture).ToString("yyyy/MM/dd HH:mm:ss.f");
-
-            L_message.Text = json["region_name"].ToString() + "  M" + json["magunitude"].ToString() + "  #" + json["report_num"].ToString() + "  EventID:" + json["report_id"].ToString();
-            Ti_proc.Enabled = true;
+            catch (Exception ex)
+            {
+                L_message.Text = ex.Message;
+            }
         }
 
         private void B_stop_Click(object sender, EventArgs e)
