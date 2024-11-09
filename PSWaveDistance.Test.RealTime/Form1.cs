@@ -44,7 +44,7 @@ namespace PSWaveDistance.Test.RealTime
                 //var jsonSt = hc.GetAsync("http://www.kmoni.bosai.go.jp/webservice/hypo/eew/20210213231450.json").Result.Content.ReadAsStringAsync().Result;
                 var json = JsonNode.Parse(jsonSt);
 
-                var message = json["result"]["message"].ToString();
+                var message = json!["result"]!["message"]!.ToString();
                 if (message != "")
                 {
                     L_message.Text = message;
@@ -58,12 +58,12 @@ namespace PSWaveDistance.Test.RealTime
                     return;
                 }
 
-                N_lat.Value = decimal.Parse(json["latitude"].ToString());
-                N_lon.Value = decimal.Parse(json["longitude"].ToString());
-                N_dep.Value = decimal.Parse(json["depth"].ToString().Replace("km", ""));
-                T_time.Text = DateTime.ParseExact(json["origin_time"].ToString(), "yyyyMMddHHmmss", CultureInfo.CurrentCulture).ToString("yyyy/MM/dd HH:mm:ss.f");
+                N_lat.Value = decimal.Parse(json!["latitude"]!.ToString());
+                N_lon.Value = decimal.Parse(json!["longitude"]!.ToString());
+                N_dep.Value = decimal.Parse(json!["depth"]!.ToString().Replace("km", ""));
+                T_time.Text = DateTime.ParseExact(json!["origin_time"]!.ToString(), "yyyyMMddHHmmss", CultureInfo.CurrentCulture).ToString("yyyy/MM/dd HH:mm:ss.f");
 
-                L_message.Text = json["region_name"].ToString() + "  M" + json["magunitude"].ToString() + "  #" + json["report_num"].ToString() + "  EventID:" + json["report_id"].ToString();
+                L_message.Text = json!["region_name"]!.ToString() + "  M" + json!["magunitude"]!.ToString() + "  #" + json!["report_num"]!.ToString() + "  EventID:" + json!["report_id"]!.ToString();
                 Ti_proc.Enabled = true;
             }
             catch (Exception ex)
@@ -80,7 +80,7 @@ namespace PSWaveDistance.Test.RealTime
             Ti_proc.Enabled = false;
         }
 
-        PSDistances psd = new();
+        private readonly PSDistances psd = new();
 
         private void Ti_proc_Tick(object sender, EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace PSWaveDistance.Test.RealTime
             else
                 mapImg = Draw_Map();
 
-            var img = (Bitmap)mapImg.Clone();
+            using var img = (Bitmap)mapImg.Clone();
             using var g = Graphics.FromImage(img);
             var drawTime = DateTime.Now;
             var originTime = DateTime.Parse(T_time.Text);
@@ -132,13 +132,13 @@ namespace PSWaveDistance.Test.RealTime
 
         Bitmap? mapImg = null;
 
-        JsonNode mapjson;
+        readonly JsonNode mapjson;
 
         double latSta = 20;
         double latEnd = 50;
         double lonSta = 120;
         double lonEnd = 150;
-        int mapSize = 1080;
+        readonly int mapSize = 1080;
 
 #pragma warning disable CS8602 // null 参照の可能性があるものの逆参照です。
 #pragma warning disable CS8604 // Null 参照引数の可能性があります。
@@ -158,7 +158,7 @@ namespace PSWaveDistance.Test.RealTime
             lonSta = (double)N_lonSta.Value;
             lonEnd = (double)N_lonEnd.Value;
 
-            var mapImg = new Bitmap(mapSize, mapSize);
+            using var mapImg = new Bitmap(mapSize, mapSize);
             var zoomW = mapSize / (lonEnd - lonSta);
             var zoomH = mapSize / (latEnd - latSta);
             using var g = Graphics.FromImage(mapImg);
@@ -259,6 +259,7 @@ namespace PSWaveDistance.Test.RealTime
         private void Ti_autoGet_Tick(object sender, EventArgs e)
         {
             B_get_Click(sender, e);
+            GC.Collect();
         }
 
         private void N_tick_ValueChanged(object sender, EventArgs e)
