@@ -89,7 +89,7 @@ namespace PSWaveDistance.Test.RealTime
             else
                 mapImg = Draw_Map();
 
-            using var img = (Bitmap)mapImg.Clone();
+            var img = (Bitmap)mapImg.Clone();
             using var g = Graphics.FromImage(img);
             var drawTime = DateTime.Now;
             var originTime = DateTime.Parse(T_time.Text);
@@ -128,7 +128,9 @@ namespace PSWaveDistance.Test.RealTime
             }
 
             P_image.BackgroundImage = img;
+            GC.Collect();
         }
+
 
         Bitmap? mapImg = null;
 
@@ -158,7 +160,7 @@ namespace PSWaveDistance.Test.RealTime
             lonSta = (double)N_lonSta.Value;
             lonEnd = (double)N_lonEnd.Value;
 
-            using var mapImg = new Bitmap(mapSize, mapSize);
+            var mapImg = new Bitmap(mapSize, mapSize);
             var zoomW = mapSize / (lonEnd - lonSta);
             var zoomH = mapSize / (latEnd - latSta);
             using var g = Graphics.FromImage(mapImg);
@@ -259,7 +261,6 @@ namespace PSWaveDistance.Test.RealTime
         private void Ti_autoGet_Tick(object sender, EventArgs e)
         {
             B_get_Click(sender, e);
-            GC.Collect();
         }
 
         private void N_tick_ValueChanged(object sender, EventArgs e)
